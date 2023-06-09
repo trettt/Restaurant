@@ -1,0 +1,75 @@
+.login-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
+  height: 100%;
+
+  .left-side-container {
+    background-image: url("../../../../assets/images/login-user.png");
+    background-size: 100% 100%;
+
+    position: relative;
+
+    .title-container {
+      padding: 10px;
+      margin-left: 10%;
+      margin-top: 3%;
+
+      p {
+        line-height: 100%;
+        font-size: min(7rem, 9vw);
+
+        font-weight: bold;
+        font-family: "Moirai One", cursive;
+
+        margin: 0;
+        padding: 0;
+
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .subtitle-container {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+
+      p {
+        font-size: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  .right-side-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .header-container {
+
+      p {
+        font-size: 3rem;
+        margin-bottom: 0;
+      }
+
+      .under-header {
+        font-size: 1rem;
+        margin-top: 0;
+      }
+    }
+
+    .input-container {
+      width: 65%;
+      margin-top:10%;
+      margin-bottom: 20px;
+    }
+
+    .footer-container {
+      font-size: 1rem;
+    }
+  }
+}

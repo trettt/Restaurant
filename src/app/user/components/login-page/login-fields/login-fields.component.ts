@@ -9,4 +9,5 @@ export class LoginFieldsComponent {
   value?: string;
   passwordVisible = false;
   password?: string;
+  checked:boolean = false;
 }

@@ -1,0 +1,67 @@
+.sign-up-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
+  height: 100%;
+
+  .left-side-container {
+    background-image: url("../../../../assets/images/sign-up-user.png");
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+
+    .title-container {
+      padding: 10px;
+      margin-left: 10%;
+      margin-top: 3%;
+
+      p {
+        line-height: 100%;
+        font-size: min(7rem, 9vw);
+
+        font-family: "Moirai One", cursive;
+        font-weight: bold;
+
+        margin: 0;
+        padding: 0;
+
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      div {
+        font-size: 3rem;
+        text-shadow: none;
+      }
+    }
+  }
+
+  .right-side-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .header-container {
+      p {
+        font-size: 3rem;
+        margin-bottom: 0;
+      }
+
+      .under-header {
+        font-size: 1rem;
+        margin-top: 0;
+      }
+    }
+
+    .input-container {
+      width: 65%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-container {
+      font-size: 1rem;
+    }
+  }
+}

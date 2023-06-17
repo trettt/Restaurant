@@ -1,27 +1,24 @@
-<div  class="login-container">
-
+<div class="sign-up-container">
   <div class="left-side-container">
-
     <div class="title-container">
-      <p> Welcome</p>
-      <p> Back! <span>(our food is that good?) </span></p>
+      <p>Welcome!</p>
+      <div>Ready to Explore</div>
+      <div>Our Delicious World?</div>
     </div>
   </div>
 
   <div class="right-side-container">
-
     <div class="header-container">
-      <p>Login</p>
+      <p>Sign Up</p>
       <p class="under-header">Please provide the necessary information.</p>
     </div>
 
     <div class="input-container">
-      <app-login-fields></app-login-fields>
+      <app-sign-up-form></app-sign-up-form>
     </div>
 
     <div class="footer-container">
-      <p>New User? <a (click)="navigateToSignUp()">Sign Up</a></p>
+      <p>Already have an account? <a (click)="navigateToLogin()">Login</a></p>
     </div>
   </div>
-
 </div>

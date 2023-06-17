@@ -1,31 +1,33 @@
+<div class="fields-container">
+  <nz-input-group nzAddOnBeforeIcon="user">
+    <input
+      nz-input
+      placeholder="Enter your e-mail address"
+      [(ngModel)]="value"
+    />
+  </nz-input-group>
 
-<nz-input-group nzAddOnBeforeIcon="user">
-  <input nz-input placeholder="Enter your e-mail address" [(ngModel)]="value" />
-</nz-input-group>
+  <br />
+  <br />
 
-<br>
-<br>
+  <nz-input-group [nzSuffix]="suffixTemplate">
+    <input
+      [type]="passwordVisible ? 'text' : 'password'"
+      nz-input
+      placeholder="Enter your password"
+      [(ngModel)]="password"
+    />
+  </nz-input-group>
+  <ng-template #suffixTemplate>
+    <span
+      nz-icon
+      [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+      (click)="passwordVisible = !passwordVisible"
+    ></span>
+  </ng-template>
 
-<nz-input-group [nzSuffix]="suffixTemplate">
-  <input
-    [type]="passwordVisible ? 'text' : 'password'"
-    nz-input
-    placeholder="Enter your password"
-    [(ngModel)]="password"
-  />
-</nz-input-group>
-<ng-template #suffixTemplate>
-  <span
-    nz-icon
-    [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
-    (click)="passwordVisible = !passwordVisible"
-  ></span>
-</ng-template>
+  <br />
+  <br />
 
-<br>
-<br>
-
-<button nz-button nzType="primary" nzBlock>Let's Eat</button>
-
-<br>
-<br>
+  <button nz-button nzType="primary" nzBlock>Let's Eat</button>
+</div>

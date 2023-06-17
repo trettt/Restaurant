@@ -6,7 +6,8 @@
 
   .left-side-container {
     background-image: url("../../../../assets/images/login-user.png");
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
 
     position: relative;
 
@@ -27,30 +28,23 @@
 
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }
-    }
+      span {
+        font-family: "Montserrat", sans-serif;
+        font-size: 15px;
 
-    .subtitle-container {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-
-      p {
-        font-size: 20px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        color: rgb(61, 61, 61);
+        text-shadow: none;
       }
     }
   }
 
   .right-side-container {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     .header-container {
-
       p {
         font-size: 3rem;
         margin-bottom: 0;
@@ -64,7 +58,7 @@
 
     .input-container {
       width: 65%;
-      margin-top:10%;
+      margin-top: 20px;
       margin-bottom: 20px;
     }
 

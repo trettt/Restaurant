@@ -1,7 +1,7 @@
-<form nz-form class="sign-up-form" [formGroup]="signUpForm">
+<form nz-form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="SubmitForm()">
   <nz-form-item>
     <nz-form-control>
-      <nz-input-group>
+      <nz-input-group nzPrefixIcon="user">
         <input
           type="text"
           nz-input
@@ -18,7 +18,7 @@
 
   <nz-form-item>
     <nz-form-control>
-      <nz-input-group>
+      <nz-input-group nzPrefixIcon="user">
         <input
           type="text"
           nz-input
@@ -28,14 +28,14 @@
       </nz-input-group>
 
       <div class="red-text" *ngIf="lastName?.errors?.['required']">
-        Please input your last name!
+        PLease input your last name!
       </div>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-control>
-      <nz-input-group>
+      <nz-input-group nzPrefixIcon="mail">
         <input
           type="text"
           nz-input
@@ -44,43 +44,92 @@
         />
       </nz-input-group>
 
-      <div class="red-text" *ngIf="email?.errors?.['required']">
-        Please input your e-mail!
+      <div
+        class="red-text"
+        *ngIf="email?.errors?.['required'] || email?.errors?.['email']"
+      >
+        Please input a valid e-mail address!
       </div>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-control>
-      <nz-input-group>
+      <nz-input-group [nzSuffix]="suffixTemplatePassword" nzPrefixIcon="lock">
         <input
-          type="text"
+          [type]="passwordVisible ? 'text' : 'password'"
           nz-input
           formControlName="password"
           placeholder="Password"
         />
       </nz-input-group>
 
+      <ng-template #suffixTemplatePassword>
+        <span
+          nz-icon
+          [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+          (click)="passwordVisible = !passwordVisible"
+        ></span>
+      </ng-template>
+
       <div class="red-text" *ngIf="password?.errors?.['required']">
-        The password is required!
+        Please input your password!
+      </div>
+      <div class="red-text" *ngIf="password?.errors?.['minLength']">
+        The password must have at least 6 characters!
+      </div>
+      <div class="red-text" *ngIf="password?.errors?.['containsDigit']">
+        The password must have at least one digit!
+      </div>
+      <div class="red-text" *ngIf="password?.errors?.['containsLowercase']">
+        The password must have at least one lowercase character!
+      </div>
+      <div class="red-text" *ngIf="password?.errors?.['containsUppercase']">
+        The password must have at least one uppercase character!
       </div>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-control>
-      <nz-input-group>
+    <nz-form-control [nzErrorTip]="errorTpl">
+      <nz-input-group
+        [nzSuffix]="suffixTemplateConfirmPassword"
+        nzPrefixIcon="safety-certificate"
+      >
         <input
-          type="text"
+          [type]="confirmPasswordVisible ? 'text' : 'password'"
           nz-input
           formControlName="confirmPassword"
           placeholder="Confirm Password"
         />
       </nz-input-group>
 
-      <div class="red-text" *ngIf="confirmPassword?.errors?.['required']">
-        Re-enter your password!
-      </div>
+      <ng-template #suffixTemplateConfirmPassword>
+        <span
+          nz-icon
+          [nzType]="confirmPasswordVisible ? 'eye-invisible' : 'eye'"
+          (click)="confirmPasswordVisible = !confirmPasswordVisible"
+        ></span>
+      </ng-template>
+
+      <ng-template #errorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          <div class="red-text">Please re-enter your password!</div>
+        </ng-container>
+        <ng-container
+          *ngIf="control.hasError('confirm') && !control.hasError('required')"
+        >
+          <div class="red-text">
+            Two passwords that you enter are inconsistent!
+          </div>
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzSpan]="27" [nzOffset]="9">
+      <button nz-button nzType="primary">Join Us</button>
     </nz-form-control>
   </nz-form-item>
 </form>

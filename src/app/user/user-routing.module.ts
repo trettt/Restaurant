@@ -17,6 +17,16 @@ const routes: Routes = [
     path: 'sign-up',
     component: SignUpPageComponent,
   },
+  // {
+  //   path:'view-menu',
+  //   component:ViewMenuPageComponent
+  // }
+  //decomentezi cand ai componenta respectiva
+  //componenta o pui in folderul components de la user
+  //si componentele din componenta respectiva (gen chestia cu first si last name si textul cu meniul si asa)
+  //le pui in componenta initiala
+  // gen ai view-menu-page ca si componenta principala
+  // iar in ea sa zicem ca ai header (nume+ prenume), grid (unde sunt mancarurile) si tot asa
 ];
 
 @NgModule({

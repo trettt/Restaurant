@@ -12,7 +12,6 @@ const routes: Routes = [
   //   component:TableViewComponent
   // }
 
-  //aici le decomentezi si modifici in momentul in care vrei sa folosesti ruta
 ];
 
 @NgModule({

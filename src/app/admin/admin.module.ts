@@ -8,7 +8,6 @@ import { LoginFieldsComponent } from './components/login-page/login-fields/login
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -30,7 +29,6 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
 
     NzLayoutModule,
     NzFormModule,

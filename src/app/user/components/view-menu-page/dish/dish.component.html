@@ -1,0 +1,20 @@
+<nz-card nzHoverable [nzCover]="coverTemplate" [nzExtra]="extraTemplate">
+    <nz-card-meta
+      [nzTitle]="dishData.name"
+    ></nz-card-meta>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img alt="dish-image" [src]="dishData.imagePath" />
+  </ng-template>
+  <ng-template #extraTemplate>
+    <a (click)="isClicked()">Details</a>
+  </ng-template>
+
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="{{dishData.name}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+      <p>Category: {{dishData.category}}</p>
+      <p>Ingredients: {{dishData.ingredients}}</p>
+      <p>Price: {{dishData.price}} RON</p>
+      <p>Portion size: {{dishData.portionSize}} gr</p>
+    </ng-container>
+  </nz-modal>

@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div class="welcome-text">
+        {{welcomeMessage}}
+        <img src="../../assets/images/RecipeBook.png">
+    </div>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <h3>Please login to your account</h3>
+
+        <app-login-fields></app-login-fields>
+
+        <p>You didn't get here by mistake, did you?</p>
+        <p>If the answer is yes,  <a (click)="navigateToUserSignUp()">create a new account</a> or <a (click)="navigateToUserLogIn()">log in</a> as a user!</p>
+    </div>
+</div>

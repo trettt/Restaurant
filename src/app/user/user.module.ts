@@ -16,12 +16,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
 import { SignUpFormComponent } from './components/sign-up-page/sign-up-form/sign-up-form.component';
+import { ViewMenuPageComponent } from './components/view-menu-page/view-menu-page.component';
+import { ViewMenuHeaderComponent } from './components/view-menu-page/view-menu-header/view-menu-header.component';
+import { DishComponent } from './components/view-menu-page/dish/dish.component';
+
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+
 @NgModule({
   declarations: [
     LoginPageComponent,
     LoginFieldsComponent,
     SignUpPageComponent,
     SignUpFormComponent,
+    ViewMenuPageComponent,
+    ViewMenuHeaderComponent,
+    DishComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +45,8 @@ import { SignUpFormComponent } from './components/sign-up-page/sign-up-form/sign
     NzButtonModule,
     NzCheckboxModule,
     NzFormModule,
+    NzCardModule,
+    NzModalModule
   ],
 })
 export class UserModule {}

@@ -1,0 +1,24 @@
+.main-frame{
+    background-color: #c33c3c;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.name-frame{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+button{
+    cursor: pointer;
+    font-size: medium;
+    margin-right: 20px;
+    color:  #c33c3c;
+    background-color: white;
+    border: 1px solid lightgray;
+}

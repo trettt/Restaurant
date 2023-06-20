@@ -13,7 +13,7 @@
   <nz-modal [(nzVisible)]="isVisible" nzTitle="{{dishData.name}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <ng-container *nzModalContent>
       <p>Category: {{dishData.category}}</p>
-      <p>Ingredients: {{dishData.ingredients}}</p>
+      <p>Ingredients: {{dishData.ingredients.join(', ')}}</p>
       <p>Price: {{dishData.price}} RON</p>
       <p>Portion size: {{dishData.portionSize}} gr</p>
     </ng-container>

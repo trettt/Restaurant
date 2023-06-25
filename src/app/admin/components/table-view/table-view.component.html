@@ -9,24 +9,26 @@
     <nz-table #basicTable [nzData]="dishes" [nzPageSize]="8">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Ingredients</th>
-          <th>Price</th>
-          <th>Portion size</th>
-          <th>Img</th>
-          <th>Edit</th>
-          <th>Del</th>
+          <th><b>Name</b></th>
+          <th><b>Category</b></th>
+          <th><b>Ingredients</b></th>
+          <th><b>Price</b></th>
+          <th><b>Portion size</b></th>
+          <th><b>Image</b></th>
+          <th><b>Edit</b></th>
+          <th><b>Del</b></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of basicTable.data">
           <td>{{ data.name}}</td>
           <td>{{ data.category}}</td>
-          <td>{{ data.ingredients }}</td>
-          <td>{{data.price}}</td>
-          <td>{{data.portionSize}}</td>
-          <td>-</td>
+          <td> {{data.ingredients.join(', ')}}</td>
+          <td>{{data.price}} RON</td>
+          <td>{{data.portionSize}} gr.</td>
+          <td> 
+            <img alt="dish-image" [src]="data.imagePath" />
+          </td>
           <td>
             <span nz-icon nzType="form" nzTheme="outline" (click)="editItem(data)"></span>
           </td>

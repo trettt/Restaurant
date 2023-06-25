@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
 import { ViewMenuPageComponent } from './components/view-menu-page/view-menu-page.component';
+import { LoginGuard } from './helpers/login.guard';
 
 const routes: Routes = [
   {
@@ -19,9 +20,10 @@ const routes: Routes = [
     component: SignUpPageComponent,
   },
   {
-    path:'view-menu',
-    component:ViewMenuPageComponent
-  }
+    path: 'view-menu',
+    component: ViewMenuPageComponent,
+    canActivate: [LoginGuard],
+  },
 ];
 
 @NgModule({

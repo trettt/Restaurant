@@ -2,17 +2,23 @@ span {
   cursor: pointer;
 }
 
-.fields-container{
+.fields-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  button{
+  button {
     background-color: #5ec3ff;
     border: none;
 
     height: 4vh;
     width: 40%;
   }
-}
 
+  .error {
+    color: rgb(221, 94, 94);
+
+    padding: 0;
+    margin: 0;
+  }
+}

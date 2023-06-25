@@ -16,12 +16,19 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { TableViewComponent } from './components/table-view/table-view.component';
+import { TableViewHeaderComponent } from './components/table-view/table-view-header/table-view-header.component';
+
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 
 @NgModule({
   declarations: [
     LoginPageComponent,
-    LoginFieldsComponent
+    LoginFieldsComponent,
+    TableViewComponent,
+    TableViewHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +42,9 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     NzInputModule,
     NzIconModule,
     NzButtonModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    NzTableModule,
+    NzPageHeaderModule
   ]
 })
 export class AdminModule { }

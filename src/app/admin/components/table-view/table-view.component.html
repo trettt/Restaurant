@@ -1,0 +1,39 @@
+<app-table-view-header></app-table-view-header>
+
+<div class="table-container">
+    <div class="table-operations">
+      <input type="text" placeholder="Search..">
+
+      <button nz-button (click)="addNewItem()" nzType="primary">Add New Item</button>
+    </div>
+    <nz-table #basicTable [nzData]="dishes" [nzPageSize]="8">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Ingredients</th>
+          <th>Price</th>
+          <th>Portion size</th>
+          <th>Img</th>
+          <th>Edit</th>
+          <th>Del</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.name}}</td>
+          <td>{{ data.category}}</td>
+          <td>{{ data.ingredients }}</td>
+          <td>{{data.price}}</td>
+          <td>{{data.portionSize}}</td>
+          <td>-</td>
+          <td>
+            <span nz-icon nzType="form" nzTheme="outline" (click)="editItem(data)"></span>
+          </td>
+          <td>
+            <span nz-icon nzType="delete" nzTheme="outline" (click)="deleteItem()"></span>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>

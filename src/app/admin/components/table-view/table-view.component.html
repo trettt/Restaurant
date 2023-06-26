@@ -6,7 +6,22 @@
 
       <button nz-button (click)="addNewItem()" nzType="primary">Add New Item</button>
     </div>
-    <nz-table #basicTable [nzData]="dishes" [nzPageSize]="8">
+    <div class="sorting">
+      <h3>Sort by:</h3>
+      <select class="dropdown-list" [(ngModel)]="selectedSortOption">
+        <option value="none">None</option>
+        <option value="priceL-H">Price: low to high</option>
+        <option value="priceH-L">Price: high to low</option>
+        <option value="nameA-Z">Name: A-Z</option>
+        <option value="nameZ-A">Name: Z-A</option>
+        <option value="categoryA-Z">Category: A-Z</option>
+        <option value="categoryZ-A">Category: Z-A</option>
+        <option value="portionSizeL-H">Portion size: low to high</option>
+        <option value="portionSizeH-L">Portion size: high to low</option>
+
+      </select>
+    </div>
+    <nz-table #basicTable [nzData]="sortedItems" [nzPageSize]="8">
       <thead>
         <tr>
           <th><b>Name</b></th>
@@ -17,6 +32,7 @@
           <th><b>Image</b></th>
           <th><b>Edit</b></th>
           <th><b>Del</b></th>
+          <th><b>Details</b></th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +50,9 @@
           </td>
           <td>
             <span nz-icon nzType="delete" nzTheme="outline" (click)="deleteItem()"></span>
+          </td>
+          <td>
+            <span nz-icon nzType="info-circle" nzTheme="outline"></span>
           </td>
         </tr>
       </tbody>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/user/services/login.service';
+import { AccountService } from 'src/app/user/services/account.service';
 
 @Component({
   selector: 'app-login-fields',
@@ -14,11 +14,12 @@ export class LoginFieldsComponent {
 
   passwordVisible = false;
   errorMessage: string = '';
+  enabledButton: boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
   loginButton(): void {
-    this.loginService.login(this.email, this.password).subscribe(
+    this.accountService.login(this.email, this.password).subscribe(
       (response) => {
         const token = response.token;
         if (this.checked) {
@@ -32,5 +33,10 @@ export class LoginFieldsComponent {
         this.errorMessage = 'The email or password are incorrect:(';
       }
     );
+  }
+
+  checkInputFilled(): void {
+    this.enabledButton =
+      this.email.trim() !== '' && this.password.trim() !== '';
   }
 }

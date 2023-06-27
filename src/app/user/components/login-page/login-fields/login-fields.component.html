@@ -4,6 +4,7 @@
       nz-input
       placeholder="Enter your e-mail address"
       [(ngModel)]="email"
+      (input)="checkInputFilled()"
     />
   </nz-input-group>
 
@@ -16,6 +17,7 @@
       nz-input
       placeholder="Enter your password"
       [(ngModel)]="password"
+      (input)="checkInputFilled()"
     />
   </nz-input-group>
   <ng-template #suffixTemplate>
@@ -39,7 +41,13 @@
   <br />
   <br />
 
-  <button nz-button nzType="primary" nzBlock (click)="loginButton()">
+  <button
+    nz-button
+    nzType="primary"
+    nzBlock
+    (click)="loginButton()"
+    [disabled]="!enabledButton"
+  >
     Let's Eat
   </button>
 </div>

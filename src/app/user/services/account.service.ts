@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class AccountService {
   private apiUrl: string = 'https://localhost:7188/api/Account';
 
   constructor(private http: HttpClient) {}
@@ -13,5 +13,15 @@ export class LoginService {
   login(email: string, password: string): Observable<any> {
     const loginData = { email, password };
     return this.http.post<any>(`${this.apiUrl}/login`, loginData);
+  }
+
+  signup(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ): Observable<any> {
+    const signUpData = { firstName, lastName, email, password };
+    return this.http.post<any>(`${this.apiUrl}/register`, signUpData);
   }
 }

@@ -1,0 +1,49 @@
+.table-container {
+    padding: 2rem;
+  
+    .table-operations {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    input {
+        order: -1;
+      }
+  }
+
+  button {
+    background-color: #c33c3c;
+    border: none;
+    justify-content: flex-end;
+  
+    &:hover {
+      background-color: #c33c3c;
+      border: none;
+    }
+
+    &:valid{
+        background-color: #c33c3c;
+      border: none;
+    }
+  }
+
+span {
+    cursor: pointer;
+}
+
+input[type=text]{
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+img{
+  height: 90px;
+  width: 90px;
+}
+
+.dropdown-list{
+  padding: 5px 10px;
+}

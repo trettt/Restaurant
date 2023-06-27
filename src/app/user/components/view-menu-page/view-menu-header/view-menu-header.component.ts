@@ -4,15 +4,17 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-view-menu-header',
   templateUrl: './view-menu-header.component.html',
-  styleUrls: ['./view-menu-header.component.scss']
+  styleUrls: ['./view-menu-header.component.scss'],
 })
 export class ViewMenuHeaderComponent {
-  firstName: string='John';
-  lastName: string='Doe';
+  firstName: string = 'John';
+  lastName: string = 'Doe';
 
-  constructor(private router:Router){}
+  constructor(private router: Router) {}
 
-  navigateToRoute(){
-    this.router.navigate(['user','login']);
+  navigateToRoute() {
+    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
+    this.router.navigate(['user', 'login']);
   }
 }

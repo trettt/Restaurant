@@ -1,4 +1,9 @@
-<form nz-form class="sign-up-form" [formGroup]="signUpForm" (ngSubmit)="SubmitForm()">
+<form
+  nz-form
+  class="sign-up-form"
+  [formGroup]="signUpForm"
+  (ngSubmit)="SubmitForm()"
+>
   <nz-form-item>
     <nz-form-control>
       <nz-input-group nzPrefixIcon="user">
@@ -129,7 +134,9 @@
 
   <nz-form-item>
     <nz-form-control [nzSpan]="27" [nzOffset]="9">
-      <button nz-button nzType="primary">Join Us</button>
+      <button nz-button nzType="primary" [disabled]="!signUpForm.valid">
+        Join Us
+      </button>
     </nz-form-control>
   </nz-form-item>
 </form>

@@ -11,6 +11,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -46,7 +47,8 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzCheckboxModule,
     NzFormModule,
     NzCardModule,
-    NzModalModule
+    NzModalModule,
+    NzMessageModule,
   ],
 })
 export class UserModule {}

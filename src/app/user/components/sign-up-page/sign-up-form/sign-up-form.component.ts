@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { CustomValidators } from 'src/app/user/helpers/custom-validators';
+import { AccountService } from 'src/app/user/services/account.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -11,6 +14,12 @@ export class SignUpFormComponent implements OnInit {
   signUpForm!: FormGroup;
   passwordVisible: boolean = false;
   confirmPasswordVisible: boolean = false;
+
+  constructor(
+    private accountService: AccountService,
+    private router: Router,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -58,6 +67,21 @@ export class SignUpFormComponent implements OnInit {
   };
 
   SubmitForm(): void {
-    console.log('aaa');
+    this.accountService
+      .signup(
+        this.firstName.value,
+        this.lastName.value,
+        this.email.value,
+        this.password.value
+      )
+      .subscribe(
+        (response) => {
+          this.router.navigate(['user', 'login']);
+          this.message.info("Your account was created! Don't forget to login!");
+        },
+        (error) => {
+          this.message.error('The email address is already used!');
+        }
+      );
   }
 }

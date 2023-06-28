@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Dish } from '../interfaces/dish';
+import { Dish } from '../user/interfaces/dish';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DishService {
-
-  constructor() { }
+  constructor() {}
 
   arrayOfDishes: Dish[] = [
     {
@@ -28,11 +27,12 @@ export class DishService {
         'oregano uscat',
         'sare',
         'piper',
-        'apă'
+        'apă',
       ],
       price: 24.99,
       portionSize: 400,
-      imagePath: 'https://jamilacuisine.ro/wp-content/uploads/2021/05/Ciorba-de-pui-a-la-grec-500x500.jpg',
+      imagePath:
+        'https://jamilacuisine.ro/wp-content/uploads/2021/05/Ciorba-de-pui-a-la-grec-500x500.jpg',
     },
     {
       name: 'Pizza prosciutto e funghi',
@@ -46,11 +46,12 @@ export class DishService {
         'ulei de măsline',
         'oregano',
         'sare',
-        'piper'
+        'piper',
       ],
       price: 34.99,
       portionSize: 550,
-      imagePath: 'https://www.newcroco.ro/image/cache/catalog/Prosciutto%20E%20Funghi%20(1600)-1000x700.jpg',
+      imagePath:
+        'https://www.newcroco.ro/image/cache/catalog/Prosciutto%20E%20Funghi%20(1600)-1000x700.jpg',
     },
     {
       name: 'Mozzarella caprese',
@@ -62,11 +63,12 @@ export class DishService {
         'ulei de măsline extravirgin',
         'oțet balsamic',
         'sare',
-        'piper'
+        'piper',
       ],
       price: 11.99,
       portionSize: 250,
-      imagePath: 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2F3b432b41ce04c96a08d77befa42b9881a587a436',
+      imagePath:
+        'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2F3b432b41ce04c96a08d77befa42b9881a587a436',
     },
     {
       name: 'Lava cake',
@@ -77,11 +79,12 @@ export class DishService {
         'ouă',
         'zahăr',
         'făină',
-        'esență de vanilie'
+        'esență de vanilie',
       ],
       price: 17.99,
       portionSize: 250,
-      imagePath: 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/39E92D31-D1AE-44DC-8B86-C60A8E6B8D05/Derivates/744B2C83-F33A-4AB5-A7DD-0D59D555D0F6.jpg',
+      imagePath:
+        'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/39E92D31-D1AE-44DC-8B86-C60A8E6B8D05/Derivates/744B2C83-F33A-4AB5-A7DD-0D59D555D0F6.jpg',
     },
     {
       name: 'Penne carbonara',
@@ -94,11 +97,12 @@ export class DishService {
         'smântână (opțional)',
         'usturoi',
         'piper proaspăt măcinat',
-        'sare'
+        'sare',
       ],
       price: 21.99,
       portionSize: 300,
-      imagePath: 'https://www.mindmegette.hu/images/242/O/shutterstock_614169200.jpg',
+      imagePath:
+        'https://www.mindmegette.hu/images/242/O/shutterstock_614169200.jpg',
     },
     {
       name: 'Aripioare pui',
@@ -112,11 +116,12 @@ export class DishService {
         'suc de lămâie',
         'boia de ardei dulce',
         'sare',
-        'piper'
+        'piper',
       ],
       price: 26.99,
       portionSize: 300,
-      imagePath: 'https://www.lauralaurentiu.ro/wp-content/uploads/2018/01/aripioare-de-pui-la-cuptor-reteta-laura-laurentiu-reteta-de-aripioare-de-pui-la-cuptor-crocante-si-picante-foto%C2%A9Laura-Laurentiu.jpg',
+      imagePath:
+        'https://www.lauralaurentiu.ro/wp-content/uploads/2018/01/aripioare-de-pui-la-cuptor-reteta-laura-laurentiu-reteta-de-aripioare-de-pui-la-cuptor-crocante-si-picante-foto%C2%A9Laura-Laurentiu.jpg',
     },
     {
       name: 'Coaste marinate',
@@ -133,11 +138,12 @@ export class DishService {
         'ulei de măsline',
         'boia de ardei dulce',
         'sare',
-        'piper'
+        'piper',
       ],
       price: 33.99,
       portionSize: 450,
-      imagePath: 'https://retete.unica.ro/wp-content/uploads/2013/11/coaste-porc-marinate.jpg',
+      imagePath:
+        'https://retete.unica.ro/wp-content/uploads/2013/11/coaste-porc-marinate.jpg',
     },
     {
       name: 'Burger cu cartofi prajiti',
@@ -157,11 +163,12 @@ export class DishService {
         'sare',
         'piper',
         'ulei de prăjit',
-        'cartofi'
+        'cartofi',
       ],
       price: 28.99,
       portionSize: 350,
-      imagePath: 'https://aplantifulpath.com/wp-content/uploads/2019/05/Black-Bean-Burger-with-Fries.jpg',
+      imagePath:
+        'https://aplantifulpath.com/wp-content/uploads/2019/05/Black-Bean-Burger-with-Fries.jpg',
     },
   ];
 }

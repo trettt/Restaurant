@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Dish } from 'src/app/user/interfaces/dish';
-import { DishService } from 'src/app/user/services/dish.service';
+import { DishService } from 'src/app/services/dish.service';
 
 @Component({
   selector: 'app-table-view',

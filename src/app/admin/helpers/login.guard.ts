@@ -13,11 +13,14 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (localStorage.getItem('adminToken') || sessionStorage.getItem('adminToken')) {
+    if (
+      localStorage.getItem('adminToken') ||
+      sessionStorage.getItem('adminToken')
+    ) {
       return true;
     }
 
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('admin/login');
     return false;
   }
 }

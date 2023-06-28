@@ -3,7 +3,7 @@ import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CustomValidators } from 'src/app/user/helpers/custom-validators';
-import { AccountService } from 'src/app/user/services/account.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-sign-up-form',

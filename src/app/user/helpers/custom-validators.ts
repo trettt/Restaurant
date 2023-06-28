@@ -1,4 +1,4 @@
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormControl, ValidationErrors } from '@angular/forms';
 
 export class CustomValidators {
   public static passwordValidator(
@@ -12,12 +12,12 @@ export class CustomValidators {
       return { minLength: true };
     }
 
-    if (!password?.value?.match(/[a-z]/)){
-      return { containsLowercase:true};
+    if (!password?.value?.match(/[a-z]/)) {
+      return { containsLowercase: true };
     }
 
-    if (!password?.value?.match(/[A-Z]/)){
-      return { containsUppercase:true};
+    if (!password?.value?.match(/[A-Z]/)) {
+      return { containsUppercase: true };
     }
 
     return null;

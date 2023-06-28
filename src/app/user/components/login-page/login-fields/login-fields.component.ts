@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from 'src/app/user/services/account.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-login-fields',
@@ -23,9 +23,9 @@ export class LoginFieldsComponent {
       (response) => {
         const token = response.token;
         if (this.checked) {
-          localStorage.setItem('token', token);
+          localStorage.setItem('userToken', token);
         } else {
-          sessionStorage.setItem('token', token);
+          sessionStorage.setItem('userToken', token);
         }
         this.router.navigate(['user', 'view-menu']);
       },

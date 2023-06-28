@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from 'src/app/admin/services/account.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-login-fields',
   templateUrl: './login-fields.component.html',
-  styleUrls: ['./login-fields.component.scss']
+  styleUrls: ['./login-fields.component.scss'],
 })
 export class LoginFieldsComponent {
   email: string = '';
@@ -16,7 +15,7 @@ export class LoginFieldsComponent {
   errorMessage: string = '';
   enabledButton: boolean = false;
 
-  constructor(private accountService:AccountService, private router: Router) {}
+  constructor(private accountService: AccountService, private router: Router) {}
 
   checkInputFilled(): void {
     this.enabledButton =
@@ -24,7 +23,7 @@ export class LoginFieldsComponent {
   }
 
   loginButton(): void {
-    this.accountService.login(this.email, this.password).subscribe(
+    this.accountService.loginAdmin(this.email, this.password).subscribe(
       (response) => {
         const token = response.token;
         if (this.checked) {
@@ -35,7 +34,8 @@ export class LoginFieldsComponent {
         this.router.navigate(['admin', 'table-view']);
       },
       (error) => {
-        this.errorMessage = 'The email or password are incorrect or you don\'t have an admin account.';
+        this.errorMessage =
+          "The email or password are incorrect or you don't have an admin account.";
       }
     );
   }

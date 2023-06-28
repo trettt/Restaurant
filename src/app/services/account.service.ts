@@ -24,4 +24,9 @@ export class AccountService {
     const signUpData = { firstName, lastName, email, password };
     return this.http.post<any>(`${this.apiUrl}/register`, signUpData);
   }
+
+  loginAdmin(email: string, password: string): Observable<any> {
+    const loginData = { email, password };
+    return this.http.post<any>(`${this.apiUrl}/login/adm`, loginData);
+  }
 }

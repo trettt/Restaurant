@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginGuard implements CanActivate {
+export class UserLoginGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate():
@@ -13,7 +13,10 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (localStorage.getItem('token') || sessionStorage.getItem('token')) {
+    if (
+      localStorage.getItem('userToken') ||
+      sessionStorage.getItem('userToken')
+    ) {
       return true;
     }
 

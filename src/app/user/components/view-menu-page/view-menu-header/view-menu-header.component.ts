@@ -13,8 +13,8 @@ export class ViewMenuHeaderComponent {
   constructor(private router: Router) {}
 
   navigateToRoute() {
-    sessionStorage.removeItem('token');
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('userToken');
+    localStorage.removeItem('userToken');
     this.router.navigate(['user', 'login']);
   }
 }

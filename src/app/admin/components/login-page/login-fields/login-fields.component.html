@@ -1,25 +1,23 @@
-<form nz-form [formGroup]="loginForm" class="login-form">
-    <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your email!">
-            <nz-input-group nzPrefixIcon="mail">
-                <input type="text" nz-input formControlName="email" placeholder="Email">
-            </nz-input-group>
-        </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-        <nz-form-control nzErrorTip="Please input the password!">
-            <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
-                <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="Password" />
-            </nz-input-group>
-            <ng-template #suffixTemplate>
-                <span
-                  nz-icon
-                  [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
-                  (click)="passwordVisible = !passwordVisible"
-                ></span>
-              </ng-template>
-        </nz-form-control>
-    </nz-form-item>
+<div class="login-form">
+    <nz-input-group nzPrefixIcon="mail">
+        <input nz-input placeholder="Email" [(ngModel)]="email" (input)="checkInputFilled()" />
+    </nz-input-group>
 
-    <button nz-button [nzType]="'primary'" [disabled]="!loginForm.valid">Let's Get Cooking!</button>
-</form>
+    <nz-input-group [nzSuffix]="suffixTemplate" nzPrefixIcon="lock">
+        <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Password" [(ngModel)]="password"
+            (input)="checkInputFilled()" />
+    </nz-input-group>
+    <ng-template #suffixTemplate>
+        <span nz-icon [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
+            (click)="passwordVisible = !passwordVisible"></span>
+    </ng-template>
+
+    <div class="error" *ngIf="errorMessage !== ''">
+        {{ errorMessage }}
+    </div>
+
+
+
+    <button nz-button [nzType]="'primary'" nzBlock (click)="loginButton()" [disabled]="!enabledButton">Let's Get
+        Cooking!</button>
+</div>

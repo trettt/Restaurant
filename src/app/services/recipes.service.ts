@@ -10,8 +10,13 @@ import { Ingredient } from '../interfaces/ingredient';
 })
 export class RecipesService {
   private apiUrl: string = 'https://localhost:7188/api';
+  private lastRecipeId: number = 0;
 
   constructor(private http: HttpClient) {}
+
+  setLastRecipeId(id: number): void {
+    this.lastRecipeId = id;
+  }
 
   getRecipes(): Observable<Recipe[]> {
     const token = sessionStorage.getItem('adminToken');
@@ -30,5 +35,54 @@ export class RecipesService {
 
   getIngredients(): Observable<Ingredient[]> {
     return this.http.get<Category[]>(`${this.apiUrl}/Ingredients`);
+  }
+
+  addRecipe(recipe: Recipe): Observable<any> {
+    const payload = {
+      name: recipe.name,
+      price: recipe.price,
+      dishesTypeId: recipe.dishesTypeId,
+      imageUrl: recipe.imageUrl,
+      portionSize: recipe.portionSize,
+    };
+    const token = sessionStorage.getItem('adminToken');
+
+    if (token) {
+      const headers = { Authorization: `Bearer ${token}` };
+      return this.http.post(`${this.apiUrl}/Recipes`, payload, { headers });
+    } else {
+      return throwError('Token missing or expired');
+    }
+  }
+
+  addIngredients(recipeId: number, ingredientId: number): Observable<any> {
+    const payload = {
+      recipeId: recipeId,
+      ingredient: ingredientId,
+    };
+
+    const token = sessionStorage.getItem('adminToken');
+
+    if (token) {
+      const headers = { Authorization: `Bearer ${token}` };
+      return this.http.put(
+        `${this.apiUrl}/Recipes/addIngredient/${recipeId}/${ingredientId}`,
+        payload,
+        { headers }
+      );
+    } else {
+      return throwError('Token missing or expired');
+    }
+  }
+
+  deleteRecipe(recipe: Recipe): Observable<any> {
+    const token = sessionStorage.getItem('adminToken');
+    if (token) {
+      const headers = { Authorization: `Bearer ${token}` };
+      const url = `${this.apiUrl}/Recipes/${recipe.id}`;
+      return this.http.delete(url, { headers });
+    } else {
+      return throwError('Token missing or expired');
+    }
   }
 }

@@ -1,0 +1,127 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Add a recipe"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzOkDisabled]="!addRecipeForm.valid"
+>
+  <ng-container *nzModalContent>
+    <form nz-form class="login-form" [formGroup]="addRecipeForm">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group>
+            <input
+              type="text"
+              nz-input
+              formControlName="name"
+              placeholder="Name"
+            />
+          </nz-input-group>
+
+          <div class="red-text" *ngIf="name?.errors?.['required']">
+            Please input a recipe name!
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <nz-input-group>
+            <input
+              type="number"
+              nz-input
+              formControlName="price"
+              placeholder="Price"
+            />
+          </nz-input-group>
+
+          <div class="red-text" *ngIf="price?.errors?.['required']">
+            Please input a price!
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-input-group>
+          <nz-form-control>
+            <nz-select
+              [(ngModel)]="selectedCategory"
+              formControlName="dishesTypeId"
+              nzPlaceHolder="Category"
+            >
+              <nz-option
+                *ngFor="let category of categories"
+                [nzValue]="category.id"
+                [nzLabel]="category.name"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-input-group>
+        <div class="red-text" *ngIf="dishesTypeId?.errors?.['required']">
+          Please select the category!
+        </div>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-input-group>
+          <nz-form-control>
+            <input
+              type="number"
+              nz-input
+              formControlName="portionSize"
+              placeholder="PortionSize"
+            />
+
+            <div class="red-text" *ngIf="portionSize?.errors?.['required']">
+              Please input the portion size!
+            </div>
+          </nz-form-control>
+        </nz-input-group>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-input-group>
+          <nz-form-control>
+            <nz-select
+              [nzMaxTagCount]="3"
+              [nzMaxTagPlaceholder]="tagPlaceHolder"
+              nzMode="multiple"
+              nzPlaceHolder="Ingredients"
+              formControlName="recipeIds"
+              [(ngModel)]="selectedIngredients"
+            >
+              <nz-option
+                *ngFor="let ingredient of ingredients"
+                [nzLabel]="ingredient.name"
+                [nzValue]="ingredient.id"
+              ></nz-option>
+            </nz-select>
+            <ng-template #tagPlaceHolder let-selectedList
+              >and {{ selectedList.length }} more selected</ng-template
+            >
+          </nz-form-control>
+        </nz-input-group>
+        <div class="red-text" *ngIf="recipeIds?.errors?.['required']">
+          Please select an ingredient!
+        </div>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-input-group>
+          <nz-form-control>
+            <input
+              type="text"
+              nz-input
+              formControlName="imageUrl"
+              placeholder="imageUrl"
+            />
+
+            <div class="red-text" *ngIf="imageUrl?.errors?.['required']">
+              Please input an image URL!
+            </div>
+          </nz-form-control>
+        </nz-input-group>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

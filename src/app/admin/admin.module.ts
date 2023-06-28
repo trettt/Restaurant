@@ -21,14 +21,17 @@ import { TableViewHeaderComponent } from './components/table-view/table-view-hea
 
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzTableModule } from 'ng-zorro-antd/table';
-
+import { AddRecipeComponent } from './components/table-view/add-recipe/add-recipe.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   declarations: [
     LoginPageComponent,
     LoginFieldsComponent,
     TableViewComponent,
-    TableViewHeaderComponent
+    TableViewHeaderComponent,
+    AddRecipeComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     NzButtonModule,
     NzCheckboxModule,
     NzTableModule,
-    NzPageHeaderModule
-  ]
+    NzPageHeaderModule,
+    NzModalModule,
+    NzSelectModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

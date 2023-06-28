@@ -7,7 +7,12 @@
     <button nz-button (click)="addNewItem()" nzType="primary">
       Add New Item
     </button>
+    <app-add-recipe
+      *ngIf="isVisible"
+      [(isVisible)]="isVisible"
+    ></app-add-recipe>
   </div>
+
   <div class="sorting">
     <h3>Sort by:</h3>
     <select class="dropdown-list" [(ngModel)]="selectedSortOption">
@@ -63,7 +68,7 @@
             nz-icon
             nzType="delete"
             nzTheme="outline"
-            (click)="deleteItem()"
+            (click)="deleteItem(data)"
           ></span>
         </td>
       </tr>

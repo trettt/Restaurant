@@ -17,6 +17,8 @@ export class TableViewComponent {
 
   selectedSortOption: string = 'none';
 
+  isVisible: boolean = false;
+
   constructor(private recipesService: RecipesService) {}
 
   ngOnInit(): void {
@@ -45,11 +47,17 @@ export class TableViewComponent {
     return ingredient ? ingredient.name : '';
   }
 
-  addNewItem() {}
+  addNewItem() {
+    this.isVisible = true;
+  }
 
   editItem(dish: Dish) {}
 
-  deleteItem() {}
+  deleteItem(data: any): void {
+    this.recipesService.deleteRecipe(data).subscribe(() => {
+      this.recipes = this.sortedItems.filter((item) => item.id !== data.id);
+    });
+  }
 
   get sortedItems(): any[] {
     switch (this.selectedSortOption) {

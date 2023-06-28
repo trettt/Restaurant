@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dish } from '../user/interfaces/dish';
+import { Dish } from '../interfaces/dish';
 
 @Injectable({
   providedIn: 'root',

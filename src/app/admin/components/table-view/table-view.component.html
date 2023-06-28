@@ -1,55 +1,72 @@
 <app-table-view-header></app-table-view-header>
 
 <div class="table-container">
-    <div class="table-operations">
-      <input type="text" placeholder="Search..">
+  <div class="table-operations">
+    <input type="text" placeholder="Search.." />
 
-      <button nz-button (click)="addNewItem()" nzType="primary">Add New Item</button>
-    </div>
-    <div class="sorting">
-      <h3>Sort by:</h3>
-      <select class="dropdown-list" [(ngModel)]="selectedSortOption">
-        <option value="none">None</option>
-        <option value="priceL-H">Price: low to high</option>
-        <option value="priceH-L">Price: high to low</option>
-        <option value="nameA-Z">Name: A-Z</option>
-        <option value="nameZ-A">Name: Z-A</option>
-        <option value="categoryA-Z">Category: A-Z</option>
-        <option value="categoryZ-A">Category: Z-A</option>
-        <option value="portionSizeL-H">Portion size: low to high</option>
-        <option value="portionSizeH-L">Portion size: high to low</option>
-      </select>
-    </div>
-    <nz-table #basicTable [nzData]="sortedItems" [nzPageSize]="8">
-      <thead>
-        <tr>
-          <th><b>Name</b></th>
-          <th><b>Category</b></th>
-          <th><b>Ingredients</b></th>
-          <th><b>Price</b></th>
-          <th><b>Portion size</b></th>
-          <th><b>Image</b></th>
-          <th><b>Edit</b></th>
-          <th><b>Del</b></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let data of basicTable.data">
-          <td>{{ data.name}}</td>
-          <td>{{ data.category}}</td>
-          <td> {{data.ingredients.join(', ')}}</td>
-          <td>{{data.price}} RON</td>
-          <td>{{data.portionSize}} gr.</td>
-          <td> 
-            <img alt="dish-image" [src]="data.imagePath" />
-          </td>
-          <td>
-            <span nz-icon nzType="form" nzTheme="outline" (click)="editItem(data)"></span>
-          </td>
-          <td>
-            <span nz-icon nzType="delete" nzTheme="outline" (click)="deleteItem()"></span>
-          </td>
-        </tr>
-      </tbody>
-    </nz-table>
+    <button nz-button (click)="addNewItem()" nzType="primary">
+      Add New Item
+    </button>
   </div>
+  <div class="sorting">
+    <h3>Sort by:</h3>
+    <select class="dropdown-list" [(ngModel)]="selectedSortOption">
+      <option value="none">None</option>
+      <option value="priceL-H">Price: low to high</option>
+      <option value="priceH-L">Price: high to low</option>
+      <option value="nameA-Z">Name: A-Z</option>
+      <option value="nameZ-A">Name: Z-A</option>
+      <option value="categoryA-Z">Category: A-Z</option>
+      <option value="categoryZ-A">Category: Z-A</option>
+      <option value="portionSizeL-H">Portion size: low to high</option>
+      <option value="portionSizeH-L">Portion size: high to low</option>
+    </select>
+  </div>
+  <nz-table #basicTable [nzData]="sortedItems" [nzPageSize]="8">
+    <thead>
+      <tr>
+        <th><b>Name</b></th>
+        <th><b>Category</b></th>
+        <th><b>Ingredients</b></th>
+        <th><b>Price</b></th>
+        <th><b>Portion size</b></th>
+        <th><b>Image</b></th>
+        <th><b>Edit</b></th>
+        <th><b>Del</b></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ getCategoryName(data.dishesTypeId) }}</td>
+        <td>
+          <ng-container *ngFor="let ingredient of data.recipeIds">
+            {{ getIngredientName(ingredient) }}
+            <br />
+          </ng-container>
+        </td>
+        <td>{{ data.price }} $</td>
+        <td>{{ data.portionSize }} gr.</td>
+        <td>
+          <img alt="dish-image" [src]="data.imageUrl" />
+        </td>
+        <td>
+          <span
+            nz-icon
+            nzType="form"
+            nzTheme="outline"
+            (click)="editItem(data)"
+          ></span>
+        </td>
+        <td>
+          <span
+            nz-icon
+            nzType="delete"
+            nzTheme="outline"
+            (click)="deleteItem()"
+          ></span>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

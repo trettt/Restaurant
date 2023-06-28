@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Dish } from '../../interfaces/dish';
+import { Dish } from '../../../interfaces/dish';
 import { DishService } from '../../../services/dish.service';
 
 @Component({

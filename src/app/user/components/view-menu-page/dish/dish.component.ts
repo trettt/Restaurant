@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Dish } from 'src/app/user/interfaces/dish';
+import { Dish } from 'src/app/interfaces/dish';
 
 @Component({
   selector: 'app-dish',
   templateUrl: './dish.component.html',
-  styleUrls: ['./dish.component.scss']
+  styleUrls: ['./dish.component.scss'],
 })
 export class DishComponent {
   @Input() dishData!: Dish;

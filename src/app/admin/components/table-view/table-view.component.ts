@@ -23,6 +23,7 @@ export class TableViewComponent {
   editItem(dish: Dish) {}
 
   deleteItem() {}
+
   get sortedItems(): any[] {
     switch (this.selectedSortOption) {
       case 'none':

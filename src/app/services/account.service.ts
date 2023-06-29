@@ -31,12 +31,13 @@ export class AccountService {
   }
 
   getUserData(): Observable<any> {
-    const token = localStorage.getItem('userToken') || sessionStorage.getItem('userToken');
-  
+    const token =
+      localStorage.getItem('userToken') || sessionStorage.getItem('userToken');
+
     const headers = new HttpHeaders({
-        'Authorization': 'Bearer ' + token
-      });
+      Authorization: 'Bearer ' + token,
+    });
 
     return this.http.get<any>(`${this.apiUrl}/user/data`, { headers });
- }
+  }
 }

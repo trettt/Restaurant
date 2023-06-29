@@ -10,7 +10,6 @@ import { Ingredient } from '../interfaces/ingredient';
 })
 export class RecipesService {
   private apiUrl: string = 'https://localhost:7188/api';
-  private recipesSubject = new Subject<Recipe[]>();
 
   constructor(private http: HttpClient) {}
 

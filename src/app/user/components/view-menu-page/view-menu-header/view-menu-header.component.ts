@@ -8,21 +8,21 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./view-menu-header.component.scss'],
 })
 export class ViewMenuHeaderComponent {
-  firstName: string = 'John';
-  lastName: string = 'Doe';
+  firstName: string = '';
+  lastName: string = '';
 
   constructor(private router: Router, private accountService: AccountService) {}
 
   ngOnInit(): void {
     this.accountService.getUserData().subscribe(
-        (response) => {
-          console.log(response);
-          this.firstName = response.firstName;
-          this.lastName = response.lastName; 
-        },
-        (error) => {
-          console.error(error);
-        }
+      (response) => {
+        console.log(response);
+        this.firstName = response.firstName;
+        this.lastName = response.lastName;
+      },
+      (error) => {
+        console.error(error);
+      }
     );
   }
 

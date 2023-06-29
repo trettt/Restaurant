@@ -29,7 +29,7 @@ export class LoginFieldsComponent {
         }
         this.router.navigate(['user', 'view-menu']);
       },
-      (error) => {
+      () => {
         this.errorMessage = 'The email or password are incorrect:(';
       }
     );

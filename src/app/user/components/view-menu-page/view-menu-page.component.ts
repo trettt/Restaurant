@@ -17,7 +17,6 @@ export class ViewMenuPageComponent {
   ngOnInit(): void {
     this.recipesService.getRecipes().subscribe((response) => {
       this.recipes = response;
-      console.log(this.recipes);
     });
   }
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormConfig } from 'ng-zorro-antd/core/config';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Category } from 'src/app/interfaces/category';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Recipe } from 'src/app/interfaces/recipe';
@@ -23,7 +23,10 @@ export class AddRecipeComponent {
   selectedCategory!: Category;
   selectedIngredients!: Ingredient[];
 
-  constructor(private recipesService: RecipesService) {}
+  constructor(
+    private recipesService: RecipesService,
+    private message: NzMessageService
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -43,7 +46,7 @@ export class AddRecipeComponent {
         Validators.required,
       ]),
       portionSize: new FormControl(null, [Validators.required]),
-      recipeIds: new FormControl(this.selectedIngredients, [
+      ingredientsIds: new FormControl(this.selectedIngredients, [
         Validators.required,
       ]),
       imageUrl: new FormControl(null, [Validators.required]),
@@ -62,8 +65,8 @@ export class AddRecipeComponent {
   get portionSize(): FormControl {
     return this.addRecipeForm.get('portionSize') as FormControl;
   }
-  get recipeIds(): FormControl {
-    return this.addRecipeForm.get('recipeIds') as FormControl;
+  get ingredientsIds(): FormControl {
+    return this.addRecipeForm.get('ingredientsIds') as FormControl;
   }
   get imageUrl(): FormControl {
     return this.addRecipeForm.get('imageUrl') as FormControl;
@@ -72,10 +75,14 @@ export class AddRecipeComponent {
   handleOk(): void {
     const newRecipe: Recipe = this.addRecipeForm.value as Recipe;
 
-    this.recipesService.addRecipe(newRecipe).subscribe((response: any) => {
-      console.log(response);
-      const recipeId = response.id; // Salvați ID-ul rețetei adăugate
-      // Utilizați ID-ul rețetei pentru alte operații
+    this.recipesService.addRecipe(newRecipe).subscribe((response) => {
+      const recipeId = response;
+      for (let i of newRecipe.ingredientsIds) {
+        this.recipesService.addIngredients(recipeId, i).subscribe();
+      }
+      this.message.warning(
+        "Don't forget to refresh the page to see the changes!"
+      );
     });
 
     this.addRecipeForm.reset();

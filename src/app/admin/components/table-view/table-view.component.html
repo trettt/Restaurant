@@ -45,7 +45,7 @@
         <td>{{ data.name }}</td>
         <td>{{ getCategoryName(data.dishesTypeId) }}</td>
         <td>
-          <ng-container *ngFor="let ingredient of data.recipeIds">
+          <ng-container *ngFor="let ingredient of data.ingredientsIds">
             {{ getIngredientName(ingredient) }}
             <br />
           </ng-container>

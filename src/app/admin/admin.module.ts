@@ -24,6 +24,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { AddRecipeComponent } from './components/table-view/add-recipe/add-recipe.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzPageHeaderModule,
     NzModalModule,
     NzSelectModule,
+    NzMessageModule,
   ],
 })
 export class AdminModule {}

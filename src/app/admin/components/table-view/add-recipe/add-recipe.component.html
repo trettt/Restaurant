@@ -87,7 +87,7 @@
               [nzMaxTagPlaceholder]="tagPlaceHolder"
               nzMode="multiple"
               nzPlaceHolder="Ingredients"
-              formControlName="recipeIds"
+              formControlName="ingredientsIds"
               [(ngModel)]="selectedIngredients"
             >
               <nz-option
@@ -97,11 +97,11 @@
               ></nz-option>
             </nz-select>
             <ng-template #tagPlaceHolder let-selectedList
-              >and {{ selectedList.length }} more selected</ng-template
+              >and {{ selectedIngredients.length }} more selected</ng-template
             >
           </nz-form-control>
         </nz-input-group>
-        <div class="red-text" *ngIf="recipeIds?.errors?.['required']">
+        <div class="red-text" *ngIf="ingredientsIds?.errors?.['required']">
           Please select an ingredient!
         </div>
       </nz-form-item>

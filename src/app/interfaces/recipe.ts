@@ -5,7 +5,7 @@ export interface Recipe {
   name: string;
   price: number;
   dishesTypeId: number;
-  recipeIds: Ingredient[];
+  ingredientsIds: number[];
   portionSize: number;
   imageUrl: string;
 }

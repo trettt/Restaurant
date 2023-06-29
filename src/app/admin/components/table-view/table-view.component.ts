@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
-import { Dish } from 'src/app/interfaces/dish';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Recipe } from 'src/app/interfaces/recipe';
 import { RecipesService } from 'src/app/services/recipes.service';
@@ -15,10 +14,10 @@ export class TableViewComponent {
   ingredients!: Ingredient[];
   categories!: Category[];
 
-  recipesCopy!: Recipe[];  
+  recipesCopy!: Recipe[];
 
   selectedSortOption: string = 'none';
-  searchRecipe: string='';
+  searchRecipe: string = '';
 
   isVisible: boolean = false;
 
@@ -54,7 +53,7 @@ export class TableViewComponent {
     this.isVisible = true;
   }
 
-  editItem(dish: Dish) {}
+  editItem(data: any) {}
 
   deleteItem(data: any): void {
     this.recipesService.deleteRecipe(data).subscribe(() => {
@@ -65,7 +64,9 @@ export class TableViewComponent {
   get sortedItems(): any[] {
     this.recipesCopy = this.recipes;
     if (this.searchRecipe) {
-      this.recipesCopy = this.recipes.filter(recipe => recipe.name.toLowerCase().includes(this.searchRecipe.toLowerCase()));
+      this.recipesCopy = this.recipes.filter((recipe) =>
+        recipe.name.toLowerCase().includes(this.searchRecipe.toLowerCase())
+      );
     }
 
     switch (this.selectedSortOption) {

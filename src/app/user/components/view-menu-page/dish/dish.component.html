@@ -18,9 +18,10 @@
     <p>Category: {{ getCategoryName(recipeData.dishesTypeId) }}</p>
     <p>Price:{{ recipeData.price }} $</p>
     <p>Ingredients:</p>
-    <div *ngFor="let ingredient of recipeData.recipeIds">
-      {{ getIngredientName(ingredient.id) }}
+    <div *ngFor="let ingredient of recipeData.ingredientsIds">
+      -> {{ getIngredientName(ingredient) }}
     </div>
+    <br />
     <p>Portion size: {{ recipeData.portionSize }} gr</p>
   </ng-container>
 </nz-modal>

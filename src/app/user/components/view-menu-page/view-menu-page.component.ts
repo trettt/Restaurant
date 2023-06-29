@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import { Dish } from '../../../interfaces/dish';
-import { DishService } from '../../../services/dish.service';
 import { Recipe } from 'src/app/interfaces/recipe';
 import { RecipesService } from 'src/app/services/recipes.service';
-import { Ingredient } from 'src/app/interfaces/ingredient';
-import { Category } from 'src/app/interfaces/category';
 
 @Component({
   selector: 'app-view-menu-page',
@@ -21,6 +17,7 @@ export class ViewMenuPageComponent {
   ngOnInit(): void {
     this.recipesService.getRecipes().subscribe((response) => {
       this.recipes = response;
+      console.log(this.recipes);
     });
   }
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParamsOptions } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { Recipe } from '../interfaces/recipe';
 import { Category } from '../interfaces/category';
 import { Ingredient } from '../interfaces/ingredient';
@@ -10,13 +10,9 @@ import { Ingredient } from '../interfaces/ingredient';
 })
 export class RecipesService {
   private apiUrl: string = 'https://localhost:7188/api';
-  private lastRecipeId: number = 0;
+  private recipesSubject = new Subject<Recipe[]>();
 
   constructor(private http: HttpClient) {}
-
-  setLastRecipeId(id: number): void {
-    this.lastRecipeId = id;
-  }
 
   getRecipes(): Observable<Recipe[]> {
     const token = sessionStorage.getItem('adminToken');
@@ -58,7 +54,7 @@ export class RecipesService {
   addIngredients(recipeId: number, ingredientId: number): Observable<any> {
     const payload = {
       recipeId: recipeId,
-      ingredient: ingredientId,
+      ingredientId: ingredientId,
     };
 
     const token = sessionStorage.getItem('adminToken');

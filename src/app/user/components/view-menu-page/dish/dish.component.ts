@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
-import { Dish } from 'src/app/interfaces/dish';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Recipe } from 'src/app/interfaces/recipe';
 import { RecipesService } from 'src/app/services/recipes.service';
@@ -16,6 +15,8 @@ export class DishComponent implements OnInit {
 
   ingredients!: Ingredient[];
   categories!: Category[];
+
+  selectedIngredients!: number[];
 
   constructor(private recipesService: RecipesService) {}
 

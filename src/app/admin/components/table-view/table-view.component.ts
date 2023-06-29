@@ -15,7 +15,10 @@ export class TableViewComponent {
   ingredients!: Ingredient[];
   categories!: Category[];
 
+  recipesCopy!: Recipe[];  
+
   selectedSortOption: string = 'none';
+  searchRecipe: string='';
 
   isVisible: boolean = false;
 
@@ -60,43 +63,48 @@ export class TableViewComponent {
   }
 
   get sortedItems(): any[] {
+    this.recipesCopy = this.recipes;
+    if (this.searchRecipe) {
+      this.recipesCopy = this.recipes.filter(recipe => recipe.name.toLowerCase().includes(this.searchRecipe.toLowerCase()));
+    }
+
     switch (this.selectedSortOption) {
       case 'none':
-        return this.recipes;
+        return this.recipesCopy;
       case 'priceL-H':
-        return this.recipes.slice().sort((a, b) => a.price - b.price);
+        return this.recipesCopy.slice().sort((a, b) => a.price - b.price);
       case 'priceH-L':
-        return this.recipes.slice().sort((a, b) => b.price - a.price);
+        return this.recipesCopy.slice().sort((a, b) => b.price - a.price);
       case 'nameA-Z':
-        return this.recipes
+        return this.recipesCopy
           .slice()
           .sort((a, b) => a.name.localeCompare(b.name));
       case 'nameZ-A':
-        return this.recipes
+        return this.recipesCopy
           .slice()
           .sort((a, b) => b.name.localeCompare(a.name));
       case 'categoryA-Z':
-        return this.recipes.slice().sort((a, b) => {
+        return this.recipesCopy.slice().sort((a, b) => {
           const categoryNameA = this.getCategoryName(a.dishesTypeId);
           const categoryNameB = this.getCategoryName(b.dishesTypeId);
           return categoryNameA.localeCompare(categoryNameB);
         });
       case 'categoryZ-A':
-        return this.recipes.slice().sort((a, b) => {
+        return this.recipesCopy.slice().sort((a, b) => {
           const categoryNameA = this.getCategoryName(a.dishesTypeId);
           const categoryNameB = this.getCategoryName(b.dishesTypeId);
           return categoryNameB.localeCompare(categoryNameA);
         });
       case 'portionSizeL-H':
-        return this.recipes
+        return this.recipesCopy
           .slice()
           .sort((a, b) => a.portionSize - b.portionSize);
       case 'portionSizeH-L':
-        return this.recipes
+        return this.recipesCopy
           .slice()
           .sort((a, b) => b.portionSize - a.portionSize);
       default:
-        return this.recipes;
+        return this.recipesCopy;
     }
   }
 }

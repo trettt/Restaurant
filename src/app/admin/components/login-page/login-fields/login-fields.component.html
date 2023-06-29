@@ -1,41 +1,25 @@
 <div class="login-form">
   <nz-input-group nzPrefixIcon="mail">
-    <input
-      nz-input
-      placeholder="Email"
-      [(ngModel)]="email"
-      (input)="checkInputFilled()"
-    />
+    <input nz-input placeholder="Email" [(ngModel)]="email" (input)="checkInputFilled()" />
   </nz-input-group>
 
+  <br>
+  <br>
+
   <nz-input-group [nzSuffix]="suffixTemplate" nzPrefixIcon="lock">
-    <input
-      [type]="passwordVisible ? 'text' : 'password'"
-      nz-input
-      placeholder="Password"
-      [(ngModel)]="password"
-      (input)="checkInputFilled()"
-    />
+    <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="Password" [(ngModel)]="password"
+      (input)="checkInputFilled()" />
   </nz-input-group>
   <ng-template #suffixTemplate>
-    <span
-      nz-icon
-      [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
-      (click)="passwordVisible = !passwordVisible"
-    ></span>
+    <span nz-icon [nzType]="passwordVisible ? 'eye-invisible':'eye'"
+      (click)="passwordVisible = !passwordVisible"></span>
   </ng-template>
 
   <div class="error" *ngIf="errorMessage !== ''">
     {{ errorMessage }}
   </div>
 
-  <button
-    nz-button
-    [nzType]="'primary'"
-    nzBlock
-    (click)="loginButton()"
-    [disabled]="!enabledButton"
-  >
+  <button nz-button [nzType]="'primary'" nzBlock (click)="loginButton()" [disabled]="!enabledButton">
     Let's Get Cooking!
   </button>
 </div>

@@ -2,7 +2,7 @@
 
 <div class="table-container">
   <div class="table-operations">
-    <input type="text" placeholder="Search.." />
+    <input type="text" [(ngModel)]="searchRecipe" placeholder="Search.." />
 
     <button nz-button (click)="addNewItem()" nzType="primary">
       Add New Item

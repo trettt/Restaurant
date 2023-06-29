@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Dish } from '../../../interfaces/dish';
 import { DishService } from '../../../services/dish.service';
+import { Recipe } from 'src/app/interfaces/recipe';
+import { RecipesService } from 'src/app/services/recipes.service';
+import { Ingredient } from 'src/app/interfaces/ingredient';
+import { Category } from 'src/app/interfaces/category';
 
 @Component({
   selector: 'app-view-menu-page',
@@ -9,11 +13,14 @@ import { DishService } from '../../../services/dish.service';
 })
 export class ViewMenuPageComponent {
   title: string = '~MENU~';
-  dishes: Dish[] = [];
 
-  constructor(private dishService: DishService) {}
+  recipes!: Recipe[];
+
+  constructor(private recipesService: RecipesService) {}
 
   ngOnInit(): void {
-    this.dishes = this.dishService.arrayOfDishes;
+    this.recipesService.getRecipes().subscribe((response) => {
+      this.recipes = response;
+    });
   }
 }

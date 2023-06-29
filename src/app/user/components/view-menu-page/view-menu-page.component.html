@@ -1,9 +1,9 @@
 <app-view-menu-header></app-view-menu-header>
 
 <div class="title">
-    {{title}}
+  {{ title }}
 </div>
 
 <div id="dishes-container">
-    <app-dish *ngFor="let dish of dishes" [dishData]="dish"></app-dish>
+  <app-dish *ngFor="let recipe of recipes" [recipeData]="recipe"></app-dish>
 </div>

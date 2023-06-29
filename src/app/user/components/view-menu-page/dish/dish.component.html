@@ -1,20 +1,26 @@
 <nz-card nzHoverable [nzCover]="coverTemplate" [nzExtra]="extraTemplate">
-    <nz-card-meta
-      [nzTitle]="dishData.name"
-    ></nz-card-meta>
-  </nz-card>
-  <ng-template #coverTemplate>
-    <img alt="dish-image" [src]="dishData.imagePath" />
-  </ng-template>
-  <ng-template #extraTemplate>
-    <a (click)="isClicked()">Details</a>
-  </ng-template>
+  <nz-card-meta [nzTitle]="recipeData.name"></nz-card-meta>
+</nz-card>
+<ng-template #coverTemplate>
+  <img alt="dish-image" [src]="recipeData.imageUrl" />
+</ng-template>
+<ng-template #extraTemplate>
+  <a (click)="isClicked()">Details</a>
+</ng-template>
 
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="{{dishData.name}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-    <ng-container *nzModalContent>
-      <p>Category: {{dishData.category}}</p>
-      <p>Ingredients: {{dishData.ingredients.join(', ')}}</p>
-      <p>Price: {{dishData.price}} RON</p>
-      <p>Portion size: {{dishData.portionSize}} gr</p>
-    </ng-container>
-  </nz-modal>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="{{ recipeData.name }}"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <p>Category: {{ getCategoryName(recipeData.dishesTypeId) }}</p>
+    <p>Price:{{ recipeData.price }} $</p>
+    <p>Ingredients:</p>
+    <div *ngFor="let ingredient of recipeData.recipeIds">
+      {{ getIngredientName(ingredient.id) }}
+    </div>
+    <p>Portion size: {{ recipeData.portionSize }} gr</p>
+  </ng-container>
+</nz-modal>

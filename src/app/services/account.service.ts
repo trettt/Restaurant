@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -29,4 +29,14 @@ export class AccountService {
     const loginData = { email, password };
     return this.http.post<any>(`${this.apiUrl}/login/adm`, loginData);
   }
+
+  getUserData(): Observable<any> {
+    const token = localStorage.getItem('userToken') || sessionStorage.getItem('userToken');
+  
+    const headers = new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      });
+
+    return this.http.get<any>(`${this.apiUrl}/user/data`, { headers });
+ }
 }
